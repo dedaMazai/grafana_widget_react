@@ -53,37 +53,6 @@
       ],
       "title": "Аэропорт - Ветер и Рейсы",
       "type": "svo-airportwidget-panel"
-    },
-    {
-      "datasource": {
-        "type": "grafana-testdata-datasource",
-        "uid": "trlxrdZVk"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "id": 2,
-      "options": {
-        "showWindData": true,
-        "showFlights": false,
-        "windUpdateInterval": 30
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "grafana-testdata-datasource",
-            "uid": "db84e60d-b92a-4089-82cb-34842fb1754b"
-          },
-          "refId": "A",
-          "scenarioId": "raw_frame",
-          "rawFrameContent": "[\n  {\n    \"columns\": [\n      {\n        \"text\": \"Time\",\n        \"type\": \"time\"\n      },\n      {\n        \"text\": \"wind_direction\",\n        \"type\": \"number\"\n      },\n      {\n        \"text\": \"wind_speed\",\n        \"type\": \"number\"\n      }\n    ],\n    \"rows\": [\n      [1609459200000, 270, 5.2],\n      [1609462800000, 275, 6.1],\n      [1609466400000, 280, 4.8],\n      [1609470000000, 265, 5.5],\n      [1609473600000, 270, 5.0]\n    ]\n  }\n]"
-        }
-      ],
-      "title": "Аэропорт - Только Ветер",
-      "type": "svo-airportwidget-panel"
     }
   ],
   "refresh": "5s",
