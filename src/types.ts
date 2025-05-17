@@ -1,5 +1,3 @@
-type SeriesSize = 'sm' | 'md' | 'lg';
-
 export interface WindData {
   direction: number; // направление ветра в градусах
   speed: number; // скорость ветра в м/с
@@ -13,9 +11,6 @@ export interface FlightData {
 }
 
 export interface SimpleOptions {
-  text: string;
-  showSeriesCount: boolean;
-  seriesCountSize: SeriesSize;
   showWindData: boolean;
   showFlights: boolean;
   windUpdateInterval: number; // интервал обновления данных о ветре в секундах
