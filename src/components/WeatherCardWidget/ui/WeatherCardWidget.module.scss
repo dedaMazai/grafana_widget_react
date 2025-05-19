@@ -1,0 +1,169 @@
+/* stylelint-disable */
+.card {
+  white-space: nowrap;
+  width: 204px;
+  background-color: var(--color-text-base);
+  border-radius: 10px;
+  overflow: hidden;
+
+  --compass-N: #C42D2D;
+
+  &--light {
+    --card-bg: var(--color-white);
+    --text-primary: var(--color-text-quaternary);
+    --text-secondary: var(--color-text);
+    --highlight-bg: var(--color-primary-bg);
+    --footer-bg: var(--color-fill-tertiary);
+    --arrow-color: #297DEA;
+    --compass-main: var(--color-border);
+    --compass-angls: var(--color-text-secondary);
+    --vpp: var(--color-text-secondary);
+    --vpp-dashed-line: #E9EAEB;
+    --vpp-blocks: #E5E8EB;
+    --vpp-numbers: #FFFFFF;
+    --divider: var(--color-text-quaternary);
+  }
+
+  &--dark {
+    --card-bg: var(--color-text-base);
+    --text-primary: var(--color-text-secondary);
+    --text-secondary: #EDEDED;
+    --highlight-bg: #1A2E44;
+    --footer-bg: #242424;
+    --arrow-color: #295FB0;
+    --compass-main: #404040;
+    --compass-angls: var(--color-text-quaternary);
+    --vpp: var(--color-text-secondary);
+    --vpp-dashed-line: #313131;
+    --vpp-blocks: #404040;
+    --vpp-numbers: #212121;
+    --divider: #404040;
+  }
+
+  > div:first-child {
+    padding: 12px;
+    background-color: var(--card-bg);
+
+    // Header section
+    > div:first-child {
+      .location {
+        color: var(--text-secondary);
+        font-weight: 500;
+        line-height: 20px;
+      }
+
+      .temperature {
+        background-color: var(--highlight-bg);
+        color: var(--text-secondary);
+        padding: 0 4px;
+        border-radius: 4px;
+        line-height: 20px;
+      }
+    }
+
+    > div:nth-child(2) > div path {
+      stroke: var(--text-secondary);
+    }
+
+    // Info sections
+    > div:not(:first-child):not(.compass) {
+      > span:first-child {
+        color: var(--text-primary);
+      }
+
+      span {
+        line-height: 16px;
+        color: var(--text-secondary);
+      }
+
+      // Special handling for content with icons
+      > div > div {
+        svg {
+          flex: none;
+        }
+
+        span:last-child {
+          white-space: normal;
+          word-break: break-word;
+        }
+      }
+    }
+
+    > div:nth-child(5) {
+      > div > span:first-child {
+        color: var(--text-primary);
+      }
+      > div > span:nth-child(2) {
+        color: var(--text-secondary);
+      }
+      span {
+        line-height: 16px;
+      };
+    }
+  }
+
+  // Divider styling
+  .divider {
+      border-color: var(--divider);
+  }
+
+  // Pressure footer
+  .pressure {
+    padding: 10px;
+    background-color: var(--footer-bg);
+    > span {
+      color: var(--text-secondary);
+    }
+  }
+
+  // Compass styling
+  .compass {
+    position: relative;
+
+    svg:nth-child(2),
+    svg:nth-child(3) {
+      position: absolute;
+    }
+
+    g > g {
+      > g > path:last-child {
+        fill: var(--text-secondary);
+      }
+      > path {
+         fill: var(--compass-main);
+      }
+      > path:nth-child(4) {
+        fill: var(--compass-N);
+      }
+      > path:nth-child(5), path:nth-child(6), path:nth-child(7) {
+        fill: var(--text-secondary);
+      }
+      > path:nth-child(n+8)  {
+        fill: var(--compass-angls);
+      }
+    }
+  }
+  .compassArrow {
+    path {
+      fill: var(--arrow-color);
+      stroke: var(--arrow-color);
+    }
+  }
+
+  .vpp > g {
+    path:first-child {
+      fill: var(--text-primary);
+    }
+    path:nth-child(2) {
+      fill: var(--vpp-dashed-line);
+    }
+    path:nth-child(3), path:nth-child(4) {
+      fill: var(--vpp-blocks);
+    }
+    path:nth-child(n+5)  {
+      fill: var(--vpp-numbers);
+    }
+  }
+}
+
+
