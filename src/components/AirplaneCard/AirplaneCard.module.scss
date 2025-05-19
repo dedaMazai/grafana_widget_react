@@ -1,0 +1,37 @@
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.icon {
+  color: #5794f2;
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1f60c4;
+  margin: 0;
+}
+
+.content {
+  color: #464c54;
+  font-size: 14px;
+  line-height: 1.5;
+} 

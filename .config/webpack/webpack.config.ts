@@ -139,11 +139,31 @@ const config = async (env: Env): Promise<Configuration> => {
           use: ['style-loader', 'css-loader'],
         },
         {
+          test: /\.module\.s[ac]ss$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: '[name]__[local]--[hash:base64:5]',
+                },
+              },
+            },
+            'sass-loader',
+          ],
+        },
+        {
           test: /\.s[ac]ss$/,
+          exclude: /\.module\.s[ac]ss$/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
         {
-          test: /\.(png|jpe?g|gif|svg)$/,
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+        },
+        {
+          test: /\.(png|jpe?g|gif)$/,
           type: 'asset/resource',
           generator: {
             filename: Boolean(env.production) ? '[hash][ext]' : '[file]',

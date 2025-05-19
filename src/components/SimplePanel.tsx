@@ -5,6 +5,7 @@ import { useTheme2 } from '@grafana/ui';
 import { PanelDataErrorView } from '@grafana/runtime';
 import { css } from '@emotion/css';
 import logo from '../img/logo.svg';
+import { AirplaneCard } from './AirplaneCard/AirplaneCard';
 
 interface Props extends PanelProps<SimpleOptions> {}
 
@@ -113,6 +114,10 @@ export const SimplePanel: React.FC<Props> = ({ options, data, width, height, fie
 
   return (
     <div className={styles.container}>
+      <AirplaneCard
+        title="Airplane Card"
+        content="Airplane Card Content"
+      />
       <img src={logo} alt="Logo" style={{ width: 48, height: 48, alignSelf: 'center' }} />
       {options.showWindData && windData && (
         <div className={styles.windSection}>
