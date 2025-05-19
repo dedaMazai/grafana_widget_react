@@ -160,7 +160,11 @@ const config = async (env: Env): Promise<Configuration> => {
         },
         {
           test: /\.svg$/,
-          use: ['@svgr/webpack'],
+          // use: ['@svgr/webpack'],
+          use: [
+            '@svgr/webpack',
+            'file-loader',
+          ],
         },
         {
           test: /\.(png|jpe?g|gif)$/,
