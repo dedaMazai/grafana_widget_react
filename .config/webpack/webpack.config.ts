@@ -43,7 +43,7 @@ const config = async (env: Env): Promise<Configuration> => {
     cache: {
       type: 'filesystem',
       buildDependencies: {
-        // __filename doesnt work in Node 24
+        // __filename doesn't work in Node 24
         config: [path.resolve(process.cwd(), '.config', 'webpack', 'webpack.config.ts')],
       },
     },
@@ -139,35 +139,11 @@ const config = async (env: Env): Promise<Configuration> => {
           use: ['style-loader', 'css-loader'],
         },
         {
-          test: /\.module\.s[ac]ss$/,
-          use: [
-            'style-loader',
-            {
-              loader: 'css-loader',
-              options: {
-                modules: {
-                  localIdentName: '[name]__[local]--[hash:base64:5]',
-                },
-              },
-            },
-            'sass-loader',
-          ],
-        },
-        {
           test: /\.s[ac]ss$/,
-          exclude: /\.module\.s[ac]ss$/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
         {
-          test: /\.svg$/,
-          // use: ['@svgr/webpack'],
-          use: [
-            '@svgr/webpack',
-            'file-loader',
-          ],
-        },
-        {
-          test: /\.(png|jpe?g|gif)$/,
+          test: /\.(png|jpe?g|gif|svg)$/,
           type: 'asset/resource',
           generator: {
             filename: Boolean(env.production) ? '[hash][ext]' : '[file]',
