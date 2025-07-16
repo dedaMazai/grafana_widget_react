@@ -1,0 +1,43 @@
+.typography {
+  display: inline-block;
+  font-family: Inter, sans-serif;
+
+  &._color-primary {
+    color: var(--cd-color-text-primary)
+  }
+
+  &._color-secondary {
+    color: var(--cd-color-text-secondary)
+  }
+
+  &._color-tertiary {
+    color: var(--cd-color-text-tertiary)
+  }
+
+  &._color-alternative {
+    color: var(--cd-color-text-inverse)
+  }
+
+  &._color-success {
+    color: var(--cd-color-text-success)
+  }
+
+  &._color-warning {
+    color: var(--cd-color-text-warning)
+  }
+
+  &._color-error {
+    color: var(--cd-color-text-error)
+  }
+
+  &._color-inherit {
+    color: inherit;
+  }
+
+  &._ellipsis {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

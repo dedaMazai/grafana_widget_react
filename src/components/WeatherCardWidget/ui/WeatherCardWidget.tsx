@@ -1,9 +1,7 @@
 import React from 'react';
-import {
-  Divider, EyeOpenIcon, HStack, Icon, Typography, VStack,
-} from '@krap/common';
-import { ReactComponent as Vpp } from '../../assets/icons/Vpp.svg';
-import { ReactComponent as Compass } from '../../assets/icons/Сompass.svg';
+import { ReactComponent as EyeOpenIcon } from '../assets/icons/eye-open.svg';
+import Vpp from '../assets/icons/Vpp.svg';
+import Compass from '../assets/icons/Compass.svg';
 import {
   WEATHER_ICON_DATA,
 } from '../const';
@@ -19,6 +17,9 @@ import {
   TCeilingIconStatus, TWeatherIconCode,
 } from '../types';
 import { WeatherInfoSection } from './WeatherInfoSection';
+import { HStack, VStack } from 'components/Stack';
+import { Divider } from 'components/Divider';
+import { Typography } from 'components/Typography';
 import cls from './WeatherCardWidget.module.scss';
 
 interface WeatherCardWidgetProps {
@@ -30,9 +31,16 @@ interface WeatherCardWidgetProps {
   icon_code: TWeatherIconCode | null
   windintens: number
   winddir: number
-  windforce1: number | null
+  windforce: number | null
   pressure: number
   theme: 'light' | 'dark'
+  showTemperature: boolean
+  showCloudCover: boolean
+  showVisibility: boolean
+  showSpecialPhenomena: boolean
+  showWind: boolean
+  showCompass: boolean
+  showPressure: boolean
 }
 
 const WeatherCardWidget = ({
@@ -44,196 +52,206 @@ const WeatherCardWidget = ({
   icon_code,
   windintens,
   winddir,
-  windforce1,
+  windforce,
   pressure,
   theme,
+  showTemperature,
+  showCloudCover,
+  showVisibility,
+  showSpecialPhenomena,
+  showWind,
+  showCompass,
+  showPressure,
 }: WeatherCardWidgetProps) => {
   const weatherIconInfo = WEATHER_ICON_DATA[ceiling_icon_status];
-  const hasWindGusts = windforce1 !== null;
+  const hasWindGusts = windforce !== null;
 
   return (
     <VStack
-      max
       className={`${cls.card} ${cls[`card--${theme}`]}`}
     >
       <VStack
         gap={8}
         max
       >
-        {/* Header with location and temperature */}
-        <HStack
-          max
-          justify="between"
-        >
-          <Typography.Body className={cls.location}>Metar SVO</Typography.Body>
-          <Typography.Body className={cls.temperature}>
-            {formatTemperature(temperature)}
-          </Typography.Body>
-        </HStack>
+        {showTemperature && (
+          <HStack
+            max
+            justify="between"
+          >
+            <Typography.Body size="small" className={cls.location}>Температура</Typography.Body>
+            <Typography.Body className={cls.temperature}>
+              {formatTemperature(temperature)}
+            </Typography.Body>
+          </HStack>
+        )}
 
-        {/* Cloudiness section */}
-        <WeatherInfoSection
-          title="Облачность"
-          content={
-            weatherIconInfo
-              ? (
-                <HStack
-                  gap={4}
-                  max
-                  align="center"
-                >
-                  {weatherIconInfo.icon}
-                  <Typography.Body
-                    title={weatherIconInfo.title}
-                    level={3}
-                  >
-                    {weatherIconInfo.title}
-                  </Typography.Body>
-                </HStack>
-              )
-              : <Typography.Body level={3}>---</Typography.Body>
-          }
-          theme={theme}
-        />
-
-        {/* Visibility section */}
-        <WeatherInfoSection
-          title="Видимость"
-          content={(
-            <HStack gap={4}>
-              <EyeOpenIcon
-                size={16}
-                color={colorEyeRegardingVisibleHandler(visibility)}
-              />
-              <Typography.Body level={3}>
-                {formatVisibility(visibility)}
-              </Typography.Body>
-              <Typography.Body
-                title={ceiling}
-                level={3}
-              >
-                {ceiling}
-              </Typography.Body>
-            </HStack>
-          )}
-          theme={theme}
-        />
-
-        {/* Special weather phenomena */}
-        <WeatherInfoSection
-          title="Особые явления"
-          content={(
-            <HStack gap={4}>
-              {icon_code && <HStack>{specialEventIconHandler(icon_code)}</HStack>}
-              <Typography.Body level={3}>
-                {weather || 'Отсутствуют'}
-              </Typography.Body>
-            </HStack>
-          )}
-          theme={theme}
-        />
-
-        {/* Wind information */}
-        <HStack
-          max
-          justify="between"
-        >
+        {showCloudCover && (
           <WeatherInfoSection
-            title="Ветер"
+            title="Облачность"
+            content={
+              weatherIconInfo
+                ? (
+                  <HStack
+                    gap={4}
+                    max
+                    align="center"
+                  >
+                    {weatherIconInfo.icon}
+                    <Typography.Body
+                      title={weatherIconInfo.title}
+                      size="small"
+                    >
+                      {weatherIconInfo.title}
+                    </Typography.Body>
+                  </HStack>
+                )
+                : <Typography.Body size="small">---</Typography.Body>
+            }
+            theme={theme}
+          />
+        )}
+
+        {showVisibility && (
+          <WeatherInfoSection
+            title="Видимость"
             content={(
-              <HStack gap={2}>
-                {windIcon(windintens, windforce1, theme)}
-                <Typography.Body level={3}>{`${winddir}°`}</Typography.Body>
+              <HStack gap={4}>
+                <EyeOpenIcon
+                  width={16}
+                  height={16}
+                  color={colorEyeRegardingVisibleHandler(visibility)}
+                />
+                <Typography.Body size="small">
+                  {formatVisibility(visibility)}
+                </Typography.Body>
+                <Typography.Body
+                  title={ceiling}
+                  size="small"
+                >
+                  {ceiling}
+                </Typography.Body>
               </HStack>
             )}
-            compact
             theme={theme}
           />
+        )}
 
-          <Divider
-            position="vertical"
-            size={34}
-            className={cls.divider}
-          />
-
+        {showSpecialPhenomena && (
           <WeatherInfoSection
-            title="Скорость"
+            title="Особые явления"
             content={(
-              <Typography.Body level={3}>
-                {formatWindSpeed(windintens)}
-              </Typography.Body>
+              <HStack gap={4}>
+                {icon_code && <HStack>{specialEventIconHandler(icon_code)}</HStack>}
+                <Typography.Body size="small">
+                  {weather || 'Отсутствуют'}
+                </Typography.Body>
+              </HStack>
             )}
-            compact
             theme={theme}
+            max
           />
+        )}
 
-          <Divider
-            position="vertical"
-            size={34}
-            className={cls.divider}
-          />
-
-          <WeatherInfoSection
-            title="Порывы"
-            content={(
-              <Typography.Body level={3}>
-                {hasWindGusts
-                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                  ? formatWindSpeed(windforce1!)
-                  : '---'}
-              </Typography.Body>
-            )}
-            compact
-            theme={theme}
-          />
-        </HStack>
-
-        {/* Wind direction compass */}
-        <HStack
-          max
-          justify="center"
-          className={cls.compass}
-        >
-          <Icon
-            Svg={Compass}
-          />
-          <svg
-            width="180"
-            height="180"
-            viewBox="0 0 180 180"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            transform={`rotate(${winddir})`}
-            className={cls.compassArrow}
+        {showWind && (
+          <HStack
+            max
+            justify="between"
           >
-            <path
-              d="M90 172L90 7"
-              stroke="currentColor"
+            <WeatherInfoSection
+              title="Ветер"
+              content={(
+                <HStack gap={2}>
+                  {windIcon(windintens, windforce, theme)}
+                  <Typography.Body size="small">{`${winddir}°`}</Typography.Body>
+                </HStack>
+              )}
+              compact
+              theme={theme}
             />
-            <g clipPath="url(#clip1_17305_114947)">
+
+            <Divider
+              position="vertical"
+              size={34}
+              className={cls.divider}
+            />
+
+            <WeatherInfoSection
+              title="Скорость"
+              content={(
+                <Typography.Body size="small">
+                  {formatWindSpeed(windintens)}
+                </Typography.Body>
+              )}
+              compact
+              theme={theme}
+            />
+
+            <Divider
+              position="vertical"
+              size={34}
+              className={cls.divider}
+            />
+
+            <WeatherInfoSection
+              title="Порывы"
+              content={(
+                <Typography.Body size="small">
+                  {hasWindGusts
+                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                    ? formatWindSpeed(windforce!)
+                    : '---'}
+                </Typography.Body>
+              )}
+              compact
+              theme={theme}
+            />
+          </HStack>
+        )}
+
+        {showCompass && (
+          <HStack
+            max
+            justify="center"
+            className={cls.compass}
+          >
+            <img src={Compass} style={{ position: 'absolute' }} />
+            <svg
+              width="180"
+              height="180"
+              viewBox="0 0 180 180"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              transform={`rotate(${winddir})`}
+              className={cls.compassArrow}
+            >
               <path
-                d="M89.9844 12L80.9844 -4.76837e-07L89.9727 4.80469L98.9844 -4.76837e-07L89.9844 12Z"
-                fill="currentColor"
+                d="M90 172L90 7"
+                stroke="currentColor"
               />
-            </g>
-          </svg>
-          <Icon
-            Svg={Vpp}
-            className={cls.vpp}
-          />
-        </HStack>
+              <g clipPath="url(#clip1_17305_114947)">
+                <path
+                  d="M89.9844 12L80.9844 -4.76837e-07L89.9727 4.80469L98.9844 -4.76837e-07L89.9844 12Z"
+                  fill="currentColor"
+                />
+              </g>
+            </svg>
+            <img src={Vpp} className={cls.vpp} style={{ position: 'absolute' }} />
+          </HStack>
+        )}
       </VStack>
 
-      {/* Pressure footer */}
-      <HStack
-        max
-        justify="center"
-        className={cls.pressure}
-      >
-        <Typography.Body level={3}>
-          {formatPressure(pressure)}
-        </Typography.Body>
-      </HStack>
+      {showPressure && (
+            <HStack
+              max
+              justify="center"
+              className={cls.pressure}
+            >
+              <Typography.Body size="small">
+                {formatPressure(pressure)}
+              </Typography.Body>
+            </HStack>
+      )}
     </VStack>
   );
 };

@@ -162,7 +162,22 @@ const config = async (env: Env): Promise<Configuration> => {
           test: /\.svg$/,
           // use: ['@svgr/webpack'],
           use: [
-            '@svgr/webpack',
+            {
+              loader: '@svgr/webpack',
+              options: {
+                icon: true,
+                svgoConfig: {
+                  plugins: [
+                    {
+                      name: 'convertColors',
+                      params: {
+                        currentColor: true,
+                      }
+                    }
+                  ]
+                }
+              }
+            },
             'file-loader',
           ],
         },

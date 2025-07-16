@@ -2,38 +2,37 @@
 .card {
   white-space: nowrap;
   width: 204px;
-  background-color: var(--color-text-base);
-  border-radius: 10px;
+  background-color: #060708;
   overflow: hidden;
 
   --compass-N: #C42D2D;
 
   &--light {
-    --card-bg: var(--color-white);
-    --text-primary: var(--color-text-quaternary);
-    --text-secondary: var(--color-text);
-    --highlight-bg: var(--color-primary-bg);
-    --footer-bg: var(--color-fill-tertiary);
+    --card-bg: #FFF;
+    --text-primary: #86898C;
+    --text-secondary: #060708;
+    --highlight-bg: #edf4fe;
+    --footer-bg: #F5F6F7;
     --arrow-color: #297DEA;
-    --compass-main: var(--color-border);
-    --compass-angls: var(--color-text-secondary);
-    --vpp: var(--color-text-secondary);
+    --compass-main: #FFF;
+    --compass-angls: #86898C;
+    --vpp: #86898C;
     --vpp-dashed-line: #E9EAEB;
     --vpp-blocks: #E5E8EB;
     --vpp-numbers: #FFFFFF;
-    --divider: var(--color-text-quaternary);
+    --divider: #86898C;
   }
 
   &--dark {
-    --card-bg: var(--color-text-base);
-    --text-primary: var(--color-text-secondary);
+    --card-bg: #060708;
+    --text-primary: #86898C;
     --text-secondary: #EDEDED;
     --highlight-bg: #1A2E44;
     --footer-bg: #242424;
     --arrow-color: #295FB0;
     --compass-main: #404040;
-    --compass-angls: var(--color-text-quaternary);
-    --vpp: var(--color-text-secondary);
+    --compass-angls: #86898C;
+    --vpp: #86898C;
     --vpp-dashed-line: #313131;
     --vpp-blocks: #404040;
     --vpp-numbers: #212121;
@@ -41,7 +40,6 @@
   }
 
   > div:first-child {
-    padding: 12px;
     background-color: var(--card-bg);
 
     // Header section
@@ -119,6 +117,7 @@
   // Compass styling
   .compass {
     position: relative;
+    height: 180px;
 
     svg:nth-child(2),
     svg:nth-child(3) {

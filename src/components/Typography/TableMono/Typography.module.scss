@@ -1,0 +1,23 @@
+.tableMono {
+  font-family: Ubuntu Sans Mono, monospace;
+  font-weight: 400;
+  text-wrap: auto;
+
+  &._size-medium {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  &._size-small {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  &._weight-bold {
+    font-weight: 700;
+  }
+
+  &._style-italic {
+    font-style: italic;
+  }
+}

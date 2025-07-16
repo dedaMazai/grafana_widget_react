@@ -1,0 +1,18 @@
+.button {
+  font-weight: 500;
+
+  &._size-large {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &._size-medium {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &._size-small {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}

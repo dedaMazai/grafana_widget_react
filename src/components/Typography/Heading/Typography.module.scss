@@ -1,0 +1,35 @@
+.heading {
+  font-weight: 600;
+  text-wrap: auto;
+  margin: 0; // todo: move reset of margin to reset.css as style for h1-h6 when deprecated typography will be removed
+
+  &._level-1 {
+    font-size: 32px;
+    line-height: 48px;
+  }
+
+  &._level-2 {
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  &._level-3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  &._level-4 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &._level-5 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &._level-6 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

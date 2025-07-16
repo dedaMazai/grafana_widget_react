@@ -1,0 +1,22 @@
+.table {
+  font-weight: 400;
+  text-wrap: auto;
+
+  &._size-medium {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  &._size-small {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  &._weight-semibold {
+    font-weight: 600;
+  }
+
+  &._style-italic {
+    font-style: italic;
+  }
+}

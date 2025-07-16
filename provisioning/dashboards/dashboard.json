@@ -35,10 +35,14 @@
       },
       "id": 1,
       "options": {
-        "showWindData": true,
-        "showFlights": true,
-        "windUpdateInterval": 60,
-        "flightsUpdateInterval": 30
+        "showCloudCover": true,
+        "showVisibility": true,
+        "showSpecialPhenomena": true,
+        "showWind": true,
+        "showCompass": true,
+        "showPressure": true,
+        "showTemperature": true,
+        "onLightTheme": true
       },
       "targets": [
         {
@@ -48,10 +52,10 @@
           },
           "refId": "A",
           "scenarioId": "raw_frame",
-          "rawFrameContent": "[\n  {\n    \"columns\": [\n      {\n        \"text\": \"Time\",\n        \"type\": \"time\"\n      },\n      {\n        \"text\": \"wind_direction\",\n        \"type\": \"number\"\n      },\n      {\n        \"text\": \"wind_speed\",\n        \"type\": \"number\"\n      }\n    ],\n    \"rows\": [\n      [1609459200000, 270, 5.2],\n      [1609462800000, 275, 6.1],\n      [1609466400000, 280, 4.8],\n      [1609470000000, 265, 5.5],\n      [1609473600000, 270, 5.0]\n    ]\n  },\n  {\n    \"columns\": [\n      {\n        \"text\": \"Time\",\n        \"type\": \"time\"\n      },\n      {\n        \"text\": \"flight_id\",\n        \"type\": \"string\"\n      },\n      {\n        \"text\": \"direction\",\n        \"type\": \"number\"\n      },\n      {\n        \"text\": \"status\",\n        \"type\": \"string\"\n      },\n      {\n        \"text\": \"time\",\n        \"type\": \"string\"\n      }\n    ],\n    \"rows\": [\n      [1609459200000, \"SU-1234\", 270, \"arrival\", \"10:00\"],\n      [1609462800000, \"SU-5678\", 90, \"departure\", \"11:30\"],\n      [1609466400000, \"SU-9012\", 270, \"arrival\", \"13:15\"],\n      [1609470000000, \"SU-3456\", 90, \"departure\", \"14:45\"],\n      [1609473600000, \"SU-7890\", 270, \"arrival\", \"16:30\"]\n    ]\n  }\n]"
+          "rawFrameContent": "[\n  {\n    \"columns\": [\n      {\n        \"text\": \"Time\",\n        \"type\": \"time\"\n      },\n      {\n        \"text\": \"weather\",\n        \"type\": \"string\"\n      },\n{\n        \"text\": \"ceiling\",\n        \"type\": \"string\"\n      },\n{\n        \"text\": \"visibility\",\n        \"type\": \"number\"\n      },\n{\n        \"text\": \"temperature\",\n        \"type\": \"number\"\n      },\n{\n        \"text\": \"pressure\",\n        \"type\": \"number\"\n      },\n{\n        \"text\": \"windintens\",\n        \"type\": \"number\"\n      },\n{\n        \"text\": \"windforce\",\n        \"type\": \"number\"\n      },\n{\n        \"text\": \"winddir\",\n        \"type\": \"number\"\n      },\n{\n        \"text\": \"ceiling_icon_status\",\n        \"type\": \"string\"\n      },\n{\n        \"text\": \"icon_code\",\n        \"type\": \"string\"\n      }\n    ],\n    \"rows\": [\n      [1609459200000, \"Текст\", \"BKN023\", 11111, 14, 1003, 73, 1111, 132, \"SCT\", \"SN\" ]\n    ]\n  }\n]"
         }
       ],
-      "title": "Аэропорт - Ветер и Рейсы",
+      "title": "Аэропорт - Погода",
       "type": "svo-airportwidget-panel"
     }
   ],
