@@ -19,7 +19,7 @@ ENV GF_AUTH_BASIC_ENABLED "false"
 ENV GF_DEFAULT_APP_MODE "development"
 
 
-LABEL maintainer="SVO"
+LABEL maintainer="Grafana Labs <hello@grafana.com>"
 
 ENV GF_PATHS_HOME="/usr/share/grafana"
 WORKDIR $GF_PATHS_HOME
